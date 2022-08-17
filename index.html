@@ -10,21 +10,49 @@
     <title>Tarpey's Pokedex</title>
 </head>
 
-<body>
-    <div class="flex justify-center bg-red-400">
-        <h1 class="text-white">Tarpey's Pokedex Collection</h1>
+<body class="bg-blue-400">
+    <header class="flex justify-center">
+        <h1 class="text-6xl font-bold text-white my-5">Tarpey's Pokedex</h1>
+    </header>
 
-        <div class="flex flex-col justify-center">
-            <ul id="pokemons">
-                <h2>Pokemon</h2>
-            </ul>
+    <section class="flex flex-col justify-center">
+        <div class="flex justify-center">
+            <div class="w-full max-w-md">
+                <form action="index.php" method="POST">
+                    <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center">
+                            <label for="pokemon" class="text-white text-2xl font-bold">Pokemon</label>
+                            <input type="text" name="pokemon" id="pokemon"
+                                class="border border-white rounded-lg p-2 w-full">
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <label for="type" class="text-white text-2xl font-bold">Type</label>
+                            <input type="text" name="type" id="type" class="border border-white rounded-lg p-2 w-full">
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <label for="weakness" class="text-white text-2xl font-bold">Weakness</label>
+                            <input type="text" name="weakness" id="weakness"
+                                class="border border-white rounded-lg p-2 w-full">
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <label for="resistance" class="text-white text-2xl font-bold">Resistance</label>
+                            <input type="text" name="resistance" id="resistance"
+                                class="border border-white rounded-lg p-2 w-full">
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <label for="description" class="text-white text-2xl font-bold">Description</label>
+                            <input type="text" name="description" id="description"
+                                class="border border-white rounded-lg p-2 w-full">
+                        </div>
+
+    </section>
+
+    <div class="flex flex-col items-center my-10">
+        <h2 class="text-white">Pokemons</h2>
+
+        <div class="card">
 
         </div>
-        <div id="detail">
-            <h2>Details</h2>
-        </div>
-    </div>
-    </div>
     </div>
 
 

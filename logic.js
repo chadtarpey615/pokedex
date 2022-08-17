@@ -1,52 +1,47 @@
-const cards = document.getElementsByClassName("pokecards")
+// const cards = document.getElementsByClassName("card")
 
 
 // fetch("https://pokeapi.glitch.me/v1/pokemon").then((response) => response.json()).then((data) => console.log(data))
 
 
-const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
-try
-{
-    fetch(baseUrl)
-        .then(response => {
-            const responseJson = response.json()
-            return responseJson
-        })
-        .then(data => {
-            const pokemons = data.results
-            pokemons.forEach(pokemon => {
-                document.getElementById('pokemons')
-                    .insertAdjacentHTML('beforeend', `<li onclick='detail("${pokemon.url}")'>${pokemon.name}</li>`)
-            })
-        })
-        .catch(error => {
-            console.error(error)
-        })
-} catch (error)
-{
-    console.error(error)
+const baseUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151'
+const pokeArr = []
+const getPokemons = async () => {
+    const response = await fetch(baseUrl)
+    const data = await response.json()
+    console.log(data)
+    return data
+
 }
 
-const detail = (url) => {
-    try
-    {
-        fetch(url)
-            .then(response => response.json())
-            .then(pokemon => {
-                document.getElementById('detail').innerHTML = ''
-                document.getElementById('detail')
-                    .insertAdjacentHTML('beforeend',
-                        `
-                  <h1>${pokemon.name}</h1>
-                  <img src="${pokemon.sprites.front_default}" />
-                `
-                    )
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    } catch (error)
-    {
-        console.error(error)
+getPokemons().then(data => {
+    data.results.forEach(pokemon => {
+        pokeArr.push(pokemon.name)
     }
-}
+    )
+    pokeArr.forEach((poke, idx) => {
+        console.log(poke)
+        console.log(idx)
+        const pokeCard = document.createElement("div")
+        pokeCard.className = "cards"
+        pokeCard.innerHTML = `
+        <div class="card-body">
+            <h5 class="card-title">${poke}</h5>
+        </div>
+        `
+        document.querySelector(".card").appendChild(pokeCard)
+    })
+})
+
+
+console.log(pokeArr)
+
+
+
+
+
+
+
+
+
+
