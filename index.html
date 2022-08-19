@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 
+
     <title>Tarpey's Pokedex</title>
 </head>
 
@@ -20,45 +21,25 @@
             <div class="w-full max-w-md">
                 <div>
                     <div class="flex flex-col items-center">
-                        <div class="flex flex-col items-center">
-                            <label for="pokemon" class="text-white text-2xl font-bold">Pokemon</label>
-                            <input type="text" name="pokemon" id="pokemon"
-                                class="border border-white rounded-lg p-2 w-full">
-                        </div>
-                        <button>
-                            <input onclick="getValueInput()" value="Search"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                        <input id="pokemon" placeholder="Search"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                        <button onclick="getValueInput()"
+                            class="w-40 bg-blue-500 hover:bg-blue-700 text-white rounded-lg h-10 mt-4"> Enter
                         </button>
-                        <!-- <div class="flex flex-col items-center">
-                            <label for="type" class="text-white text-2xl font-bold">Type</label>
-                            <input type="text" name="type" id="type" class="border border-white rounded-lg p-2 w-full">
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <label for="weakness" class="text-white text-2xl font-bold">Weakness</label>
-                            <input type="text" name="weakness" id="weakness"
-                                class="border border-white rounded-lg p-2 w-full">
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <label for="resistance" class="text-white text-2xl font-bold">Resistance</label>
-                            <input type="text" name="resistance" id="resistance"
-                                class="border border-white rounded-lg p-2 w-full">
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <label for="description" class="text-white text-2xl font-bold">Description</label>
-                            <input type="text" name="description" id="description"
-                                class="border border-white rounded-lg p-2 w-full">
-                        </div> -->
+                        <a class="mt-5" href="./pokemons.html"> All Pokes!!!</a>
                     </div>
+
                 </div>
+            </div>
 
     </section>
 
-    <div class="flex flex-col items-center my-10">
+    <div class="flex flex-col md:flex-row justify-center my-10">
         <h2 class="text-white">Pokemons</h2>
+    </div>
 
-        <div class="card">
+    <div class="card flex flex-wrap">
 
-        </div>
     </div>
 
 
