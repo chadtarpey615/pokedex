@@ -8,17 +8,24 @@ let userPoke;
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 const pokeArr = []
 
+const clearValueInput = async (id) => {
+    document.getElementById(id).remove()
+}
+
 const getValueInput = async () => {
     userPoke = await document.getElementById("pokemon").value
     const response = await fetch(`${baseUrl}${userPoke}`)
     const data = await response.json()
     console.log(data)
     const userCard = document.createElement("div")
-    userCard.className = "p-6 max-w-sm bg-white text-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-4"
+    // userCard.className = "p-6 max-w-sm bg-white text-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-4"
     userCard.innerHTML = `
-    <div class="flex flex-row">
-    <img class="w-full rounded-t-lg bg-gray-300 fill-current"src=${data.sprites.front_default} alt="${data.name}">
-    <div class="flex flex-col justify-between p-6 w-full h-auto">
+    <div class="flex flex-row p-6 max-w-sm bg-white text-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-4" id=${data.id}>
+    <div class="flex flex-col">
+    <img class="w-full h-2/3 rounded-t-lg bg-gray-300 fill-current"src=${data.sprites.front_default} alt="${data.name}">
+    <button onclick="clearValueInput(${data.id})"class="bg-blue-300 hover:bg-blue-100 w-full h-1/4 rounded-lg mt-2" onclick="clearValueInput()">Remove Pokemon</button>
+    </div>
+    <div class="flex flex-col justify-between p-6 w-full h-auto" >
         <h5 class="card-title">Pokemon: ${data.name}</h5>
         <p class="card-text">Weight: ${data.weight}lbs</p>
         <p class="card-text">Height: ${data.height}ft</p>
@@ -35,7 +42,12 @@ const getValueInput = async () => {
 </div>
         `
     document.querySelector(".card").appendChild(userCard)
+
+
 }
+
+
+
 
 
 
