@@ -1,5 +1,5 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
-// const pokeArr = []
+const pokeArr = []
 
 
 const getPokemons = async () => {
