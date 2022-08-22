@@ -14,15 +14,20 @@ const getValueInput = async () => {
     console.log("mew")
     const response = await fetch(`${baseUrl}${userPoke}`)
     const data = await response.json()
-    const userCard = document.createElement("div")
+    createCard(data)
 
-    const { name, weight, height, abilities, moves, stats } = data
+    return data
+}
+
+const createCard = async (data) => {
+    const { name, weight, height, abilities, moves, stats, id, sprites } = await data
+    const userCard = document.createElement("div")
     userCard.innerHTML = `
     <div class="flex flex-row p-6 max-w-sm bg-white text-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-4" id=${data.id}>
     <div class="flex flex-col">
-    <img class="w-full h-2/3 rounded-t-lg bg-gray-300 fill-current"src=${data.sprites.front_default} alt="${data.name}">
-    <button onclick="clearValueInput(${data.id})"class="bg-blue-300 hover:bg-blue-400 w-full h-1/4 rounded-lg mt-2">Remove Pokemon</button>
-        <button onclick="moreInfo(${name})"class="bg-blue-300 hover:bg-blue-400 w-full h-1/4 rounded-lg mt-2">More Info Pokemon</button>
+    <img class="w-full h-2/3 rounded-t-lg bg-gray-300 fill-current"src=${sprites.front_default} alt="${data.name}">
+    <button onclick="clearValueInput(${id})"class="bg-blue-300 hover:bg-blue-400 w-full h-1/4 rounded-lg mt-2">Remove Pokemon</button>
+        <button onclick="moreInfo(${data})"class="bg-blue-300 hover:bg-blue-400 w-full h-1/4 rounded-lg mt-2">More Info Pokemon</button>
 
     </div>
     <div class="flex flex-col justify-between border p-6 w-full h-auto" >
@@ -44,24 +49,28 @@ const getValueInput = async () => {
         `
     document.querySelector(".card").appendChild(userCard)
 
-}
-
-
-const moreInfo = async (userPoke) => {
-    console.log("after", userPoke)
-    try
+    if (moreInfo)
     {
-        await console.log(userPoke)
-    } catch (error)
-    {
-        console.log(error)
+        moreInfo(data)
     }
-
 }
-    // const response = await fetch(`${baseUrl}${name}`)
-    // const data = await response.json()
-    // console.log("datata", data)
-    // document.getElementById(id).children[1].classList.add("hidden")
+
+const moreInfo = async (data) => {
+    console.log("after", data.name)
+
+
+    const response = await fetch(`${baseUrl}${data.name}`)
+    const moreData = await response.json()
+    console.log("datata", moreData)
+    if (moreInfo === true)
+    {
+
+        document.getElementById(data.id).children[1].classList.add("hidden")
+    }
+}
+
+
+
 
 
 
